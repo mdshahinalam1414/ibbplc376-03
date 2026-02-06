@@ -207,7 +207,7 @@ footer{
 <script>
 const users = [
   {u:"Md Shahin Alam", p:"1234"},
-  {u:"agent2", p:"2345"},
+  {u:"Cash", p:"1234"},
   {u:"agent3", p:"3456"},
   {u:"agent4", p:"4567"},
   {u:"agent5", p:"5678"},
@@ -230,7 +230,7 @@ function login(){
     msg.innerText = "✔ Access Granted";
 
     // 🔗 Google Sheet link (replace with your actual sheet link)
-    window.open("https://docs.google.com/spreadsheets/d/1aykDfulTqWfUQcX5zrx0q1piARLtESTz9OkegRDdaio/edit?usp=sharing", "_blank");
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSdvO7MAxZHhEvXKpmPExfKknpzsV6acvxjvACPt71QQ4icP3g/viewform?usp=publish-editor", "_blank");
   } else {
     msg.style.color = "red";
     msg.innerText = "✖ Wrong Username or Password";
