@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBBPLC | Enter</title>
+<title>IBBPLC | Report Entry</title>
 
 <style>
 :root{
   --green:#008C44;
   --light:#F4FBF7;
+  --dark:#1c1c1c;
+  --highlight:#00FF9D;
 }
 
 *{
   box-sizing:border-box;
-  font-family:"Segoe UI", Arial, sans-serif;
+  font-family:"Orbitron", "Segoe UI", Arial, sans-serif;
 }
 
 body{
   margin:0;
-  background:var(--light);
+  background:linear-gradient(120deg,#F4FBF7,#E0F8E6);
   min-height:100vh;
   display:flex;
   flex-direction:column;
@@ -31,16 +33,18 @@ header{
   padding:15px 20px;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 header img{
-  height:35px;
+  height:38px;
 }
 
 header h1{
   margin:0;
   font-size:clamp(20px,2.5vw,28px);
+  text-shadow: 0 0 6px rgba(0,255,157,0.6);
 }
 
 /* MAIN */
@@ -53,34 +57,26 @@ main{
   position:relative;
 }
 
-/* OWNER NAME ABOVE FOOTER */
-.owner{
-  position:absolute;
-  bottom:70px;
-  right:20px;
-  font-size:12px;
-  color:#555;
-}
-
 /* CARD FORM */
 .card{
   background:#fff;
   width:100%;
-  max-width:420px;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  max-width:430px;
+  padding:35px 25px 45px 25px;
+  border-radius:15px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
   text-align:center;
   position:relative;
+  border-top:4px solid var(--green);
 }
 
 /* AGENT LOGO OPTION */
 .agent-logo{
   position:absolute;
-  top:-20px;
-  right:-20px;
-  width:60px;
-  height:60px;
+  top:-25px;
+  right:-25px;
+  width:65px;
+  height:65px;
   border-radius:50%;
   background:#ccc;
   display:flex;
@@ -88,42 +84,63 @@ main{
   align-items:center;
   font-size:10px;
   color:#555;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 /* FORM HEADINGS */
 .card h2{
   color:var(--green);
-  margin-bottom:5px;
+  margin-bottom:8px;
+  font-family:"Orbitron",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:clamp(22px,3vw,26px);
+  text-shadow:0 0 6px rgba(0,255,157,0.8);
 }
 
 .card h4{
   margin:0 0 20px;
   font-weight:500;
   color:#555;
+  font-size:15px;
 }
 
+/* INPUT & BUTTON */
 input{
   width:100%;
-  padding:12px;
+  padding:14px;
   margin-bottom:15px;
-  border-radius:6px;
+  border-radius:8px;
   border:1px solid #ccc;
   font-size:16px;
+  transition:0.3s;
+}
+
+input:focus{
+  border-color:var(--green);
+  box-shadow:0 0 8px rgba(0,140,68,0.4);
+  outline:none;
 }
 
 button{
   width:100%;
-  padding:12px;
+  padding:14px;
   background:var(--green);
   border:none;
-  border-radius:6px;
+  border-radius:8px;
   color:#fff;
   font-size:16px;
   cursor:pointer;
+  transition:0.3s;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:600;
 }
 
 button:hover{
-  opacity:.9;
+  background:#00FF9D;
+  color:#000;
+  box-shadow:0 0 12px rgba(0,255,157,0.6);
 }
 
 #msg{
@@ -133,41 +150,52 @@ button:hover{
 
 /* CONTACT */
 .contact{
-  margin-top:25px;
+  margin-top:28px;
   background:#f7f7f7;
   padding:15px;
   border-radius:8px;
   font-size:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* OWNER ABOVE FOOTER */
+.owner{
+  text-align:right;
+  padding:5px 20px 2px 0;
+  font-size:12px;
+  color:#555;
+  margin-bottom:2px;
 }
 
 /* FOOTER */
 footer{
   background:#000;
   color:#fff;
-  padding:14px 10px;
+  padding:16px 10px;
   text-align:center;
   font-size:14px;
+  letter-spacing:0.5px;
 }
 
-/* MOBILE FIX */
+/* RESPONSIVE */
 @media(max-width:480px){
-  footer{
-    text-align:center;
-  }
-  .owner{
-    bottom:90px;
-    right:10px;
-  }
   .agent-logo{
     width:50px;
     height:50px;
-    top:-15px;
-    right:-15px;
+    top:-18px;
+    right:-18px;
+  }
+  .owner{
+    font-size:11px;
+    padding-right:10px;
   }
 }
 </style>
-</head>
 
+<!-- Google Fonts for digital look -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+</head>
 <body>
 
 <header>
@@ -179,10 +207,10 @@ footer{
 <main>
 
   <div class="card">
-    <!-- Agent Logo Option -->
+    <!-- Agent Logo Placeholder -->
     <div class="agent-logo">Agent</div>
 
-    <h2>Enter</h2>
+    <h2>Report</h2>
     <h4>Rajendrapur Cantonment Agent Outlet</h4>
 
     <input type="text" id="user" placeholder="Username">
@@ -197,10 +225,9 @@ footer{
     </div>
   </div>
 
-  <div class="owner">Md. Shahin Alam</div>
-
 </main>
 
+<div class="owner">Md. Shahin Alam</div>
 <footer>
   Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur
 </footer>
@@ -225,7 +252,7 @@ async function login(){
   const list = await fetchData();
   const ok = list.find(x=>x.u===u && x.p===p);
 
-  msg.style.color = ok ? "green":"red";
+  msg.style.color = ok ? "#00FF9D":"red";
   msg.innerText = ok ? "✔ Access Granted" : "✖ Wrong Username or Password";
 }
 </script>
