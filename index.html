@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBBPLC Agent Outlet | Secure Access</title>
+<title>IBBPLC | Report Entry</title>
 
 <style>
 :root{
   --green:#008C44;
   --light:#F4FBF7;
-  --dark:#1c1c1c;
 }
 
 *{
   box-sizing:border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family:"Segoe UI", Arial, sans-serif;
 }
 
 body{
@@ -29,13 +28,13 @@ body{
 header{
   background:var(--green);
   color:#fff;
-  padding:20px;
+  padding:18px;
   text-align:center;
 }
 
 header h1{
   margin:0;
-  font-size:clamp(20px, 3vw, 30px);
+  font-size:clamp(20px, 3vw, 28px);
 }
 
 /* MAIN */
@@ -45,8 +44,19 @@ main{
   justify-content:center;
   align-items:center;
   padding:20px;
+  position:relative;
 }
 
+/* NAME ABOVE FOOTER */
+.owner{
+  position:absolute;
+  bottom:70px;
+  right:20px;
+  font-size:12px;
+  color:#555;
+}
+
+/* CARD */
 .card{
   background:#fff;
   width:100%;
@@ -59,7 +69,13 @@ main{
 
 .card h2{
   color:var(--green);
-  margin-bottom:20px;
+  margin-bottom:5px;
+}
+
+.card h4{
+  margin:0 0 20px;
+  font-weight:500;
+  color:#555;
 }
 
 input{
@@ -104,29 +120,9 @@ button:hover{
 footer{
   background:#000;
   color:#fff;
-  padding:12px 20px;
+  padding:14px 10px;
+  text-align:center;
   font-size:14px;
-}
-
-.footer-wrap{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.name{
-  font-weight:600;
-}
-
-/* MOBILE FIX */
-@media(max-width:480px){
-  footer{
-    text-align:center;
-  }
-  .footer-wrap{
-    justify-content:center;
-  }
 }
 </style>
 </head>
@@ -134,12 +130,14 @@ footer{
 <body>
 
 <header>
-  <h1>Islami Bank Bangladesh PLC – Agent Outlet</h1>
+  <h1>Islami Bank Bangladesh PLC</h1>
 </header>
 
 <main>
+
   <div class="card">
-    <h2>Secure Sheet Access</h2>
+    <h2>Report Enter</h2>
+    <h4>Rajendrapur Cantonment Agent Outlet</h4>
 
     <input type="text" id="user" placeholder="Username">
     <input type="password" id="pass" placeholder="Password">
@@ -152,13 +150,13 @@ footer{
       <p>📧 Email: yourmail@example.com</p>
     </div>
   </div>
+
+  <div class="owner">Md. Shahin Alam</div>
+
 </main>
 
 <footer>
-  <div class="footer-wrap">
-    <div class="name">Md. Shahin Alam</div>
-    <div>Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur</div>
-  </div>
+  Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur
 </footer>
 
 <script>
