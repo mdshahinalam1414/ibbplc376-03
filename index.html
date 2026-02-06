@@ -9,31 +9,31 @@
 :root{
   --green:#008C44;
   --light:#F4FBF7;
-  --dark:#1c1c1c;
   --highlight:#00FF9D;
 }
 
 *{
   box-sizing:border-box;
   font-family:"Segoe UI", Arial, sans-serif;
+  margin:0;
+  padding:0;
 }
 
 body{
-  margin:0;
   background:var(--light);
-  min-height:100vh;
   display:flex;
   flex-direction:column;
+  min-height:100vh;
 }
 
 /* HEADER */
 header{
   background:var(--green);
   color:#fff;
-  padding:15px 20px;
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
+  padding:15px 20px;
 }
 
 header img{
@@ -41,7 +41,6 @@ header img{
 }
 
 header h1{
-  margin:0;
   font-size:22px;
   white-space:nowrap;
 }
@@ -56,29 +55,20 @@ main{
   position:relative;
 }
 
-/* OWNER ABOVE FOOTER */
-.owner{
-  text-align:right;
-  padding:5px 20px 2px 0;
-  font-size:12px;
-  color:#555;
-  margin-bottom:2px;
-}
-
-/* CARD FORM */
+/* CARD */
 .card{
+  position:relative;
   background:#fff;
   width:100%;
   max-width:430px;
   padding:30px 25px 35px 25px;
   border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,.1);
-  text-align:center;
-  position:relative;
   border-top:4px solid var(--green);
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  text-align:center;
 }
 
-/* AGENT LOGO INSIDE BOX */
+/* AGENT LOGO - no text, corner inside box */
 .agent-logo{
   position:absolute;
   top:15px;
@@ -87,26 +77,22 @@ main{
   height:50px;
   border-radius:50%;
   background:#ccc;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:10px;
-  color:#555;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 
-/* FORM HEADINGS */
+/* HEADINGS */
 .card h2{
+  font-size:20px;
   color:var(--green);
   margin-bottom:8px;
-  font-size:20px;
-  letter-spacing:0.5px;
 }
 
 .card h4{
-  margin:0 0 20px;
-  font-weight:500;
-  color:#555;
   font-size:15px;
+  color:#555;
+  margin-bottom:20px;
 }
 
 /* INPUT & BUTTON */
@@ -120,9 +106,9 @@ input{
 }
 
 input:focus{
+  outline:none;
   border-color:var(--green);
   box-shadow:0 0 6px rgba(0,140,68,0.3);
-  outline:none;
 }
 
 button{
@@ -156,16 +142,25 @@ button:hover{
   padding:15px;
   border-radius:8px;
   font-size:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* OWNER ABOVE FOOTER */
+.owner{
+  text-align:right;
+  font-size:12px;
+  color:#555;
+  padding:5px 20px 2px 0;
+  margin-bottom:2px;
 }
 
 /* FOOTER */
 footer{
   background:#000;
   color:#fff;
-  padding:16px 10px;
   text-align:center;
+  padding:16px 10px;
   font-size:14px;
-  letter-spacing:0.5px;
 }
 
 /* RESPONSIVE */
@@ -187,15 +182,14 @@ footer{
 <body>
 
 <header>
-  <!-- Bank Logo -->
   <img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Islami_Bank_Bangladesh_Logo.svg" alt="IBBPLC Logo">
   <h1>Islami Bank Bangladesh PLC</h1>
 </header>
 
 <main>
   <div class="card">
-    <!-- Agent Logo Inside Box -->
-    <img src="islami-bank-agent-banking-logo-png.png" alt="IBBPLC Logo">
+    <!-- Agent Logo (replace background-image url) -->
+    <div class="agent-logo" style="background-image:url('https://via.placeholder.com/50');"></div>
 
     <h2>Report</h2>
     <h4>Rajendrapur Cantonment Agent Outlet</h4>
