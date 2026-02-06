@@ -219,14 +219,24 @@ const users = [
 ];
 
 function login(){
-  const u=document.getElementById("user").value.trim();
-  const p=document.getElementById("pass").value.trim();
-  const msg=document.getElementById("msg");
+  const u = document.getElementById("user").value.trim();
+  const p = document.getElementById("pass").value.trim();
+  const msg = document.getElementById("msg");
 
-  const ok = users.find(x=>x.u===u && x.p===p);
-  msg.style.color = ok ? "green":"red";
-  msg.innerText = ok ? "✔ Access Granted" : "✖ Wrong Username or Password";
+  const ok = users.find(x => x.u === u && x.p === p);
+
+  if(ok){
+    msg.style.color = "green";
+    msg.innerText = "✔ Access Granted";
+
+    // 🔗 Google Sheet link (replace with your actual sheet link)
+    window.open("https://docs.google.com/spreadsheets/d/1aykDfulTqWfUQcX5zrx0q1piARLtESTz9OkegRDdaio/edit?usp=sharing", "_blank");
+  } else {
+    msg.style.color = "red";
+    msg.innerText = "✖ Wrong Username or Password";
+  }
 }
+
 </script>
 
 </body>
