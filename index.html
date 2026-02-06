@@ -56,17 +56,18 @@ main{
 }
 
 /* CARD */
-.card{
-  position:relative;
-  background:#fff;
+.card::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
   width:100%;
-  max-width:430px;
-  padding:30px 25px 35px 25px;
-  border-radius:15px;
-  border-top:4px solid var(--green);
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  text-align:center;
+  height:60px;          /* নিচের কালো অংশের উচ্চতা */
+  background:#000;      /* কালো রঙ */
+  border-radius:0 0 15px 15px;
+  z-index:-1;
 }
+
 
 /* AGENT LOGO - no text, corner inside box */
 .agent-logo{
