@@ -206,16 +206,16 @@ footer{
 
 <script>
 const users = [
-  {u:"Md Shahin Alam", p:"1234"},
-  {u:"Cash", p:"1234"},
-  {u:"agent3", p:"3456"},
-  {u:"agent4", p:"4567"},
-  {u:"agent5", p:"5678"},
-  {u:"agent6", p:"6789"},
-  {u:"agent7", p:"7890"},
-  {u:"agent8", p:"8901"},
-  {u:"agent9", p:"9012"},
-  {u:"agent10",p:"0123"}
+  {u:"Md Shahin Alam", p:"1234", link:"https://forms.gle/SRzycHSqnMuVJQtf8"},
+  {u:"Cash", p:"1234", link:"https://forms.gle/SRzycHSqnMuVJQtf8"},
+  {u:"Admin", p:"1234", link:"https://docs.google.com/spreadsheets/d/1qrpdJD_lp_8zXD5xD3Su4BVOmBd_3rSnKZcp23QdXEU/edit?usp=sharing"},
+  {u:"Ebrahim", p:"1234", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent5", p:"5678", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent6", p:"6789", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent7", p:"7890", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent8", p:"8901", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent9", p:"9012", link:"https://docs.google.com/forms/d/FORM2"},
+  {u:"agent10",p:"0123", link:"https://docs.google.com/forms/d/FORM2"}
 ];
 
 function login(){
@@ -230,7 +230,7 @@ function login(){
     msg.innerText = "✔ Access Granted";
 
     // 🔗 Google Sheet link (replace with your actual sheet link)
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSdvO7MAxZHhEvXKpmPExfKknpzsV6acvxjvACPt71QQ4icP3g/viewform?usp=publish-editor", "_blank");
+    window.open(ok.link, "_blank");
   } else {
     msg.style.color = "red";
     msg.innerText = "✖ Wrong Username or Password";
