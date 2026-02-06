@@ -9,7 +9,7 @@
 :root{
   --green:#008C44;
   --light:#F4FBF7;
-  --highlight:#00FF9D;
+  --gray:#e6e6e6;
 }
 
 *{
@@ -32,12 +32,12 @@ header{
   color:#fff;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   padding:15px 20px;
 }
 
 header img{
-  height:80px;
+  height:55px;
 }
 
 header h1{
@@ -52,44 +52,55 @@ main{
   justify-content:center;
   align-items:center;
   padding:20px;
-  position:relative;
 }
 
 /* CARD */
+.card{
+  position:relative;
+  background:#fff;
+  width:100%;
+  max-width:430px;
+  padding:30px 25px 40px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  text-align:center;
+  overflow:hidden;
+}
+
+/* CARD BOTTOM GRAY */
 .card::after{
   content:"";
   position:absolute;
   left:0;
   bottom:0;
   width:100%;
-  height:60px;          /* নিচের কালো অংশের উচ্চতা */
-  background:#000;      /* কালো রঙ */
+  height:60px;
+  background:var(--gray);
   border-radius:0 0 15px 15px;
-  z-index:-1;
 }
 
-
-/* AGENT LOGO - no text, corner inside box */
+/* AGENT LOGO */
 .agent-logo{
   position:absolute;
-  top:0px;
-  right:0px;
-  width:100px;
-  height:60px;
-  border-radius:0;
-  background:transparent;
-  background-size:cover;
+  top:12px;
+  right:12px;
+  width:90px;
+  height:55px;
+  background-image:url('islami-bank-agent-banking-logo-png.png');
+  background-size:contain;
+  background-repeat:no-repeat;
   background-position:center;
-  
 }
 
-/* HEADINGS */
+/* HEADING */
 .card h2{
-  background:#fff;          /* সাদা ব্যাকগ্রাউন্ড */
-  color:#008C44;            /* সবুজ লেখা */
-  padding:10px 15px;
+  background:#fff;
+  color:#000;
+  padding:10px 18px;
   border-radius:6px;
   display:inline-block;
+  margin-bottom:6px;
+  font-size:20px;
 }
 
 .card h4{
@@ -98,7 +109,7 @@ main{
   margin-bottom:20px;
 }
 
-/* INPUT & BUTTON */
+/* INPUT */
 input{
   width:100%;
   padding:12px;
@@ -114,6 +125,7 @@ input:focus{
   box-shadow:0 0 6px rgba(0,140,68,0.3);
 }
 
+/* BUTTON */
 button{
   width:100%;
   padding:12px;
@@ -123,14 +135,11 @@ button{
   color:#fff;
   font-size:16px;
   cursor:pointer;
-  text-transform:uppercase;
   font-weight:600;
 }
 
 button:hover{
-  background:#00FF9D;
-  color:#000;
-  box-shadow:0 0 8px rgba(0,255,157,0.5);
+  opacity:0.9;
 }
 
 #msg{
@@ -145,16 +154,14 @@ button:hover{
   padding:15px;
   border-radius:8px;
   font-size:15px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* OWNER ABOVE FOOTER */
+/* OWNER */
 .owner{
   text-align:right;
   font-size:12px;
   color:#555;
-  padding:5px 20px 2px 0;
-  margin-bottom:2px;
+  padding:6px 20px 2px 0;
 }
 
 /* FOOTER */
@@ -168,16 +175,8 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:480px){
-  .agent-logo{
-    width:45px;
-    height:45px;
-    top:12px;
-    right:12px;
-  }
-  .owner{
-    font-size:11px;
-    padding-right:10px;
-  }
+  header h1{font-size:18px;}
+  .agent-logo{width:70px;height:45px;}
 }
 </style>
 </head>
@@ -185,14 +184,13 @@ footer{
 <body>
 
 <header>
-  <img src="islami-bank-bangladesh-logo-png.png" alt="IBBPLC Logo">
+  <img src="islami-bank-bangladesh-logo-png.png">
   <h1>Islami Bank Bangladesh PLC</h1>
 </header>
 
 <main>
   <div class="card">
-    <!-- Agent Logo (replace background-image url) -->
-    <div class="agent-logo" style="background-image:url('islami-bank-agent-banking-logo-png.png');"></div>
+    <div class="agent-logo"></div>
 
     <h2>Report</h2>
     <h4>Rajendrapur Cantonment Agent Outlet</h4>
@@ -211,31 +209,34 @@ footer{
 </main>
 
 <div class="owner">Md. Shahin Alam</div>
+
 <footer>
   Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur
 </footer>
 
 <script>
-const sheetURL = "<YOUR_GOOGLE_SHEET_JSON_URL>";
+/* 🔐 10 USER LOGIN DATA */
+const users = [
+  {u:"agent1", p:"1234"},
+  {u:"agent2", p:"2345"},
+  {u:"agent3", p:"3456"},
+  {u:"agent4", p:"4567"},
+  {u:"agent5", p:"5678"},
+  {u:"agent6", p:"6789"},
+  {u:"agent7", p:"7890"},
+  {u:"agent8", p:"8901"},
+  {u:"agent9", p:"9012"},
+  {u:"agent10",p:"0123"}
+];
 
-async function fetchData(){
-  const res = await fetch(sheetURL);
-  const data = await res.json();
-  return data.feed.entry.map(e=>({
-    u:e.gsx$username.$t,
-    p:e.gsx$password.$t
-  }));
-}
+function login(){
+  const u = document.getElementById("user").value.trim();
+  const p = document.getElementById("pass").value.trim();
+  const msg = document.getElementById("msg");
 
-async function login(){
-  const u=document.getElementById("user").value.trim();
-  const p=document.getElementById("pass").value.trim();
-  const msg=document.getElementById("msg");
+  const ok = users.find(x => x.u === u && x.p === p);
 
-  const list = await fetchData();
-  const ok = list.find(x=>x.u===u && x.p===p);
-
-  msg.style.color = ok ? "#00FF9D":"red";
+  msg.style.color = ok ? "green" : "red";
   msg.innerText = ok ? "✔ Access Granted" : "✖ Wrong Username or Password";
 }
 </script>
