@@ -1,71 +1,188 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Islami Bank Bangladesh Agent Outlet Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBBPLC Agent Outlet | Secure Access</title>
+
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #E1F0E8; }
-  header { background: #008C44; padding: 20px; text-align: center; }
-  header h1 { color: #fff; margin: 0; font-size: 28px; }
-  .container { padding: 30px; text-align: center; }
-  .login-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; display: inline-block; }
-  input { padding: 10px; margin: 8px 0; width: 250px; border-radius: 4px; border: 1px solid #ccc; }
-  button { padding: 10px 25px; background:#008C44; border:none; color:#fff; border-radius:4px; cursor:pointer; }
-  footer { background: #000; padding: 15px; color: #fff; text-align: center; font-size: 14px; }
-  .contact { margin-top: 20px; font-size: 16px; }
+:root{
+  --green:#008C44;
+  --light:#F4FBF7;
+  --dark:#1c1c1c;
+}
+
+*{
+  box-sizing:border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  background:var(--light);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* HEADER */
+header{
+  background:var(--green);
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:clamp(20px, 3vw, 30px);
+}
+
+/* MAIN */
+main{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card{
+  background:#fff;
+  width:100%;
+  max-width:420px;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  text-align:center;
+}
+
+.card h2{
+  color:var(--green);
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:var(--green);
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+#msg{
+  margin-top:10px;
+  font-weight:600;
+}
+
+/* CONTACT */
+.contact{
+  margin-top:25px;
+  background:#f7f7f7;
+  padding:15px;
+  border-radius:8px;
+  font-size:15px;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  color:#fff;
+  padding:12px 20px;
+  font-size:14px;
+}
+
+.footer-wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.name{
+  font-weight:600;
+}
+
+/* MOBILE FIX */
+@media(max-width:480px){
+  footer{
+    text-align:center;
+  }
+  .footer-wrap{
+    justify-content:center;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Islami Bank Bangladesh PLC - Agent Outlet Login</h1>
+  <h1>Islami Bank Bangladesh PLC – Agent Outlet</h1>
 </header>
 
-<div class="container">
-  <div class="login-box">
-    <h2>Login with Password</h2>
-    <input type="text" id="user" placeholder="Username"><br>
-    <input type="password" id="pass" placeholder="Password"><br>
-    <button onclick="checkLogin()">Login</button>
-    <p id="message"></p>
-  </div>
+<main>
+  <div class="card">
+    <h2>Secure Sheet Access</h2>
 
-  <div class="contact">
-    <h3>Contact Section</h3>
-    <p>📞 Phone: <span id="phone">+8801XXXXXXXXX</span></p>
-    <p>📧 Email: <span id="email">yourmail@example.com</span></p>
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <div id="msg"></div>
+
+    <div class="contact">
+      <p>📞 Phone: +8801XXXXXXXXX</p>
+      <p>📧 Email: yourmail@example.com</p>
+    </div>
   </div>
-</div>
+</main>
 
 <footer>
-  <p>Md. Shahin Alam</p>
-  <p>Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur</p>
+  <div class="footer-wrap">
+    <div class="name">Md. Shahin Alam</div>
+    <div>Rajendrapur Cantonment Agent Outlet, Gazipur Sadar, Gazipur</div>
+  </div>
 </footer>
 
 <script>
-const sheetUrl = "<YOUR_GOOGLE_SHEET_JSON_URL>";
+const sheetURL = "<YOUR_GOOGLE_SHEET_JSON_URL>";
 
-async function getSheetData() {
-  try {
-    let response = await fetch(sheetUrl);
-    let data = await response.json();
-    return data.feed.entry.map(entry => ({
-      username: entry.gsx$username.$t,
-      password: entry.gsx$password.$t
-    }));
-  } catch (error) {
-    console.error("Sheet fetch error:", error);
-    return [];
-  }
+async function fetchData(){
+  const res = await fetch(sheetURL);
+  const data = await res.json();
+  return data.feed.entry.map(e=>({
+    u:e.gsx$username.$t,
+    p:e.gsx$password.$t
+  }));
 }
 
-async function checkLogin() {
-  const user = document.getElementById("user").value.trim();
-  const pass = document.getElementById("pass").value.trim();
-  let records = await getSheetData();
-  let valid = records.find(r => r.username === user && r.password === pass);
+async function login(){
+  const u=document.getElementById("user").value.trim();
+  const p=document.getElementById("pass").value.trim();
+  const msg=document.getElementById("msg");
 
-  document.getElementById("message").textContent = valid ? "Login successful!" : "Incorrect credentials.";
+  const list = await fetchData();
+  const ok = list.find(x=>x.u===u && x.p===p);
+
+  msg.style.color = ok ? "green":"red";
+  msg.innerText = ok ? "✔ Access Granted" : "✖ Wrong Username or Password";
 }
 </script>
 
